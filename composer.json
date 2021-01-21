@@ -1,0 +1,15 @@
+{
+    "name": "chann/digital-blocks",
+    "description": "WordPress Plugin for getting service data from Cambodia web portal to all provincail website. Develop by Department of e-Government's office of Website.",
+    "type": "plugin",
+    "authors": [
+        {
+            "name": "channchetra",
+            "email": "channchetra@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"CEGOV\\": "inc/"}
+    }
+}
