@@ -9,5 +9,5 @@
  * Webpack is compiling as the input file.
  */
 
-import './block-service/block.js';
-import './block-service-content/block.js';
+// import './block-service/block.js';
+// import './block-service-content/block.js';

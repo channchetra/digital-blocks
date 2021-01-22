@@ -21,7 +21,8 @@ final class Init
     public static function getPluginSetting() {
         return array(
             LoadSettings::class,
-            RegisterAsset::class
+            RegisterAsset::class,
+            Blocks\Services::class
         );
     }
 
