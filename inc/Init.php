@@ -15,28 +15,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class Init
 {
     function __construct() {
-
+        
     }
-
-    public static function getPluginSetting() {
+    public static function getServices() {
         return array(
             LoadSettings::class,
             RegisterAsset::class,
-            Blocks\Services::class
+            Blocks\Services::class,
         );
     }
 
-    public static function registerSetting() {
-        foreach( self::getPluginSetting() as $class ) {
-            $blocks_set = self::instantiate( $class );
-            if( method_exists( $blocks_set, "register" ) ) {
-                $blocks_set->register();
+    public static function registerServices() {
+        foreach( self::getServices() as $class ) {
+            $service = self::instantiate( $class );
+            if( method_exists( $service, "register" ) ) {
+                $service->register();
             }
         }
     }
 
     private static function instantiate( $class ) {
-        $blocks_set = new $class();
-        return $blocks_set;
+        $service = new $class();
+        return $service;
     }
 }

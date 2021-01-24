@@ -7,7 +7,7 @@
  * @package CEGOV
  */
 
-namespace CEGOV;
+namespace CEGOV\Base;
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

@@ -21,3 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Block Initializer.
  */
 require_once plugin_dir_path( __FILE__ ) . "vendor/autoload.php";
+if( class_exists( "CEGOV\\Init" ) ) {
+	CEGOV\Init::registerServices();
+}

@@ -21,6 +21,11 @@ class ComposerStaticInit7aaf925d03b7f45ba20fd585c69dcec6
     );
 
     public static $classMap = array (
+        'CEGOV\\Base\\BaseController' => __DIR__ . '/../..' . '/inc/Base/BaseController.php',
+        'CEGOV\\Blocks\\Services' => __DIR__ . '/../..' . '/inc/Blocks/Services.php',
+        'CEGOV\\Init' => __DIR__ . '/../..' . '/inc/Init.php',
+        'CEGOV\\LoadSettings' => __DIR__ . '/../..' . '/inc/LoadSettings.php',
+        'CEGOV\\RegisterAsset' => __DIR__ . '/../..' . '/inc/RegisterAsset.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 

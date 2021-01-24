@@ -6,5 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CEGOV\\Base\\BaseController' => $baseDir . '/inc/Base/BaseController.php',
+    'CEGOV\\Blocks\\Services' => $baseDir . '/inc/Blocks/Services.php',
+    'CEGOV\\Init' => $baseDir . '/inc/Init.php',
+    'CEGOV\\LoadSettings' => $baseDir . '/inc/LoadSettings.php',
+    'CEGOV\\RegisterAsset' => $baseDir . '/inc/RegisterAsset.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
 );

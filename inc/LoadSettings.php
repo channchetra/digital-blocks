@@ -36,7 +36,7 @@ class LoadSettings extends BaseController
             array(
                 array(
                     'slug' => $this->plugin_name,
-                    'title' => __( 'CEGOV Block 2', 'CEGOV' ),
+                    'title' => __( 'Cambodia Digital', 'CEGOV' ),
                     'icon'  => '',
                 ),
             )

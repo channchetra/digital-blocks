@@ -3,7 +3,7 @@
  * @package CEGOV
  */
 
-namespace CEGOV;
+namespace CEGOV\Blocks;
 
 use CEGOV\Base\BaseController;
 
@@ -25,15 +25,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @uses {wp-editor} for WP editor styles.
  * @since 1.0.0
  */
+
 class Services extends BaseController
 {
 	public function register() {
-        add_action( "init", array( $this, "registerBlock" ) );
+       add_action( "init", array( $this, "registerBlock" ) );
     }
-
     public function registerBlock() {
         register_block_type(
-            $this->plugin_name . '/services', array(
+            $this->plugin_name . 'digital-blocks/services', array(
                 'style'         => $this->plugin_name . '-style',
                 'editor_script' => $this->plugin_name . '-js',
                 'editor_style'  => $this->plugin_name . '-editor-css',
