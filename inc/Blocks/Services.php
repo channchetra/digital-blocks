@@ -11,20 +11,6 @@ use CEGOV\Base\BaseController;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-/**
- * Enqueue Gutenberg block assets for both frontend + backend.
- *
- * Assets enqueued:
- * 1. blocks.style.build.css - Frontend + Backend.
- * 2. blocks.build.js - Backend.
- * 3. blocks.editor.build.css - Backend.
- *
- * @uses {wp-blocks} for block type registration & related functions.
- * @uses {wp-element} for WP Element abstraction — structure of blocks.
- * @uses {wp-i18n} to internationalize the block's text.
- * @uses {wp-editor} for WP editor styles.
- * @since 1.0.0
- */
 
 class Services extends BaseController
 {
@@ -33,7 +19,7 @@ class Services extends BaseController
     }
     public function registerBlock() {
         register_block_type(
-            $this->plugin_name . 'digital-blocks/services', array(
+            $this->plugin_name . '/services', array(
                 'style'         => $this->plugin_name . '-style',
                 'editor_script' => $this->plugin_name . '-js',
                 'editor_style'  => $this->plugin_name . '-editor-css',
@@ -50,6 +36,14 @@ class Services extends BaseController
                 )
             )
         );
+    }
+    public function renderPostsBlock() {
+        ob_start();
+        echo '<pre>';
+        print_r( $attributes );
+        echo '</pre>';
+        echo '<h1>Hello from Rendered</h1>';
+        return ob_get_clean();
     }
 }
 

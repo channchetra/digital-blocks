@@ -1,7 +1,8 @@
+import Editor from './editor';
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 const { InspectorControls  } = wp.blockEditor
-const { PanelBody, __experimentalNumberControl : NumberControl, __experimentalInputControl : InputControl } = wp.components
+const { PanelBody, __experimentalNumberControl : NumberControl, __experimentalInputControl : InputControl, TextControl } = wp.components
 const { Fragment } = wp.element
 registerBlockType( 'digital-blocks/services', {
 	title: __( 'Serivce Container', 'CEGOV' ),
@@ -12,69 +13,16 @@ registerBlockType( 'digital-blocks/services', {
 		__( 'egov block', 'CEGOV' )
 	],
 	attributes: {
-		mark_text: {
-            type: 'string',
-			default: 'Exchange Rate'
-		},
-		toggle_panel: {
-			type: 'boolean',
-			default: false
-		},
-		api: {
+		api:{
 			type: 'string',
 			default: ''
 		},
-		item_to_show: {
+		mark_text:{
 			type: 'string',
-			default: 8
+			default: 'Title'
 		}
 	},
-	edit: ( { attributes, setAttributes } ) => {
-		const {
-			mark_text, 
-			toggle_panel,
-			api, 
-			item_to_show
-		} = attributes
-		
-		return (
-			<Fragment>
-				<InspectorControls>
-					<PanelBody>
-						<MarkText
-							attributes={attributes}
-							setAttributes={setAttributes}
-						/>
-					</PanelBody>
-					<PanelBody 
-						title={ __( 'Block Options', 'CEGOV' ) }
-						initialOpen={ toggle_panel }
-						onToggle={ () => {
-							setAttributes( { toggle_panel: ! toggle_panel } ) 
-						} }
-					>
-						<InputControl
-							label={ __( 'Api URL', 'CEGOV' ) }
-							value={ api }
-							onChange={ ( value ) => setAttributes( { api: value } ) }
-						/>
-						<NumberControl
-							label={ __( 'Item To Show', 'CEGOV' )  }
-							isShiftStepEnabled={ true }
-							shiftStep={ 10 }
-							value={ item_to_show }
-							onChange={ ( item ) => setAttributes( { item_to_show: item } ) }
-							min={ -1 }
-						/>
-					</PanelBody>
-				</InspectorControls>
-				<div className={ 'border p-3' }>
-					<small>{ mark_text }</small>
-				</div>
-			</Fragment>
-		)
-	},
-	
+	edit: Editor,
 	save: () => {
 		return null
 	}
