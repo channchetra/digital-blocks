@@ -10,4 +10,6 @@
  */
 
 import './services/block';
+import './sc-lists/block'
+import './sc-detail/block'
 // import './block-service-content/block.js';
