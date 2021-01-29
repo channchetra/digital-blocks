@@ -3,6 +3,7 @@ const { TextControl } = wp.components
 
 const MarkText = ( { attributes, setAttributes } ) => {
     const { mark_text } = attributes
+
     return (
         <TextControl
             label= { __( 'Mark Text', 'egov' ) }

@@ -26,14 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 
-class Services extends BaseController
+class SCDetail extends BaseController
 {
 	public function register() {
        add_action( "init", array( $this, "registerBlock" ) );
     }
     public function registerBlock() {
         register_block_type(
-            $this->plugin_name . 'digital-blocks/services', array(
+            $this->plugin_name . '/sc-detail', array(
                 'style'         => $this->plugin_name . '-style',
                 'editor_script' => $this->plugin_name . '-js',
                 'editor_style'  => $this->plugin_name . '-editor-css',
@@ -50,6 +50,25 @@ class Services extends BaseController
                 )
             )
         );
+    }
+    public function renderPostsBlock( $attributes ) {
+        ob_start();
+        
+        echo '<div class="container">';
+        echo $this->getDistantTerms()->content->rendered;
+        echo '</div>';
+        return ob_get_clean();
+    }
+    public function getDistantTerms() {
+        if ( ! isset( $_GET['service_id'] ) ) {
+            return [];
+        }
+        $id = $_GET['service_id'];
+        $response = wp_remote_get('https://demo.cambodia.gov.kh/wp-json/wp/v2/service/'.$id);
+        if(is_wp_error($response)) {
+            return array();
+        }
+        return json_decode(wp_remote_retrieve_body($response));
     }
 }
 
