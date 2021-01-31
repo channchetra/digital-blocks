@@ -9,7 +9,9 @@
  * Webpack is compiling as the input file.
  */
 
-import './services/block';
+import './services/block'
 import './sc-lists/block'
 import './sc-detail/block'
+import './sc-for/block'
+import './sc-union/block'
 // import './block-service-content/block.js';
