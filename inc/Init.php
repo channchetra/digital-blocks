@@ -22,7 +22,6 @@ final class Init
             LoadSettings::class,
             RegisterAsset::class,
             Blocks\Services::class,
-            Blocks\SCLists::class,
             Blocks\SCDetail::class,
             Blocks\SCFor::class,
             Blocks\SCUnion::class
