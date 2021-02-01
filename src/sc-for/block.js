@@ -64,17 +64,17 @@ registerBlockType( 'digital-blocks/sc-for', {
 						} }
 					>
 						<InputControl
-							label={ __( 'Api URL', 'CEGOV' ) }
+							label={ __( 'Rest Api (URL)', 'CEGOV' ) }
 							value={ api }
 							onChange={ ( value ) => setAttributes( { api: value } ) }
 						/>
 						<InputControl
-							label={ __( 'Union', 'CEGOV' ) }
+							label={ __( 'Union Term (ID)', 'CEGOV' ) }
 							value={ union }
 							onChange={ ( value ) => setAttributes( { union: value } ) }
 						/>
 						<InputControl
-							label={ __( 'Page URL', 'CEGOV' ) }
+							label={ __( 'Destination Page (URL)', 'CEGOV' ) }
 							value={ page }
 							onChange={ ( value ) => setAttributes( { page: value } ) }
 						/>

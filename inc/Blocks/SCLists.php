@@ -60,18 +60,11 @@ class SCLists extends BaseController
         // }
         echo '</pre>';
         echo '<div class="container">';
-        foreach( $this->getDistantTerms() as $item ) {
+        foreach( $this->getDistantTerms( 'https://demo.cambodia.gov.kh/wp-json/wp/v2/service?service-topic=316' ) as $item ) {
             echo '<p><a href="https://provincial.local/service-detail/?service_id='.$item->id.'">'.$item->title->rendered.'</a></p>';
         }
         echo '</div>';
         return ob_get_clean();
-    }
-    public function getDistantTerms() {
-        $response = wp_remote_get('https://demo.cambodia.gov.kh/wp-json/wp/v2/service?service-topic=316');
-        if(is_wp_error($response)) {
-            return array();
-        }
-        return json_decode(wp_remote_retrieve_body($response));
     }
 }
 

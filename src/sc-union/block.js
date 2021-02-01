@@ -29,10 +29,6 @@ registerBlockType( 'digital-blocks/sc-union', {
 			type: 'string',
 			default: ''
 		},
-		union: {
-			type: 'string',
-			default: ''
-		},
 		page: {
 			type: 'string',
 			default: ''
@@ -43,7 +39,6 @@ registerBlockType( 'digital-blocks/sc-union', {
 			mark_text, 
 			toggle_panel,
 			api,
-			union,
 			page
 		} = attributes
 
@@ -64,17 +59,12 @@ registerBlockType( 'digital-blocks/sc-union', {
 						} }
 					>
 						<InputControl
-							label={ __( 'Api URL', 'CEGOV' ) }
+							label={ __( 'Api (URL)', 'CEGOV' ) }
 							value={ api }
 							onChange={ ( value ) => setAttributes( { api: value } ) }
 						/>
 						<InputControl
-							label={ __( 'Union', 'CEGOV' ) }
-							value={ union }
-							onChange={ ( value ) => setAttributes( { union: value } ) }
-						/>
-						<InputControl
-							label={ __( 'Page URL', 'CEGOV' ) }
+							label={ __( 'Destination Page (SLUG)', 'CEGOV' ) }
 							value={ page }
 							onChange={ ( value ) => setAttributes( { page: value } ) }
 						/>

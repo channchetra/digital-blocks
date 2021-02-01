@@ -42,33 +42,30 @@ class SCDetail extends BaseController
                     'api' => array(
                         'type' => 'string',
                         'default' => ''
-                    ),
-                    'item_to_show' => array(
-                        'type' => 'number',
-                        'default' => 8
                     )
                 )
             )
         );
     }
     public function renderPostsBlock( $attributes ) {
-        ob_start();
-        
-        echo '<div class="container">';
-        echo $this->getDistantTerms()->content->rendered;
-        echo '</div>';
-        return ob_get_clean();
-    }
-    public function getDistantTerms() {
         if ( ! isset( $_GET['service_id'] ) ) {
-            return [];
+            return;
         }
         $id = $_GET['service_id'];
-        $response = wp_remote_get('https://demo.cambodia.gov.kh/wp-json/wp/v2/service/'.$id);
-        if(is_wp_error($response)) {
-            return array();
-        }
-        return json_decode(wp_remote_retrieve_body($response));
+        $data = $this->getDistantTerms( 'https://demo.cambodia.gov.kh/wp-json/wp/v2/service/'.$id );
+        ob_start();
+        echo '
+        <section>
+            <header class="block-heading text-left">
+                <h4 class="text-danger font-weight-bold">
+                    '.$data->title->rendered.'
+                </h4>
+            </header>
+        </section>
+        ';
+        echo $data->content->rendered;
+        return ob_get_clean();
     }
+    
 }
 

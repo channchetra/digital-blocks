@@ -59,10 +59,11 @@ class SCFor extends BaseController
         ob_start();
         
         $column = 3;
+        $term_id = $attributes['union'];
         $api = $attributes['api'];
         echo (
             '
-            <div class="container">
+            <div class="">
                 <div class="block-topic">
                     <table class="table table-bordered">
                         <tbody>
@@ -70,7 +71,7 @@ class SCFor extends BaseController
             '
         );
 
-        foreach ( $this->getDistantTerms( $api ) as $key => $term ) {
+        foreach ( $this->getDistantTerms( $api.'/'.$term_id ) as $key => $term ) {
             printf(
                 '
                 <td>
@@ -92,7 +93,7 @@ class SCFor extends BaseController
                 $term->icon,
                 $attributes['page'],
                 $term->id,
-                $attributes['union'],
+                $term_id,
                 $term->name,
                 $term->description
             );
@@ -106,12 +107,6 @@ class SCFor extends BaseController
 
         return ob_get_clean();
     }
-    public function getDistantTerms( $api = '' ) {
-        $response = wp_remote_get( $api );
-        if(is_wp_error($response)) {
-            return array();
-        }
-        return json_decode(wp_remote_retrieve_body($response));
-    }
+    
 }
 

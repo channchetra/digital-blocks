@@ -43,10 +43,6 @@ class SCUnion extends BaseController
                         'type' => 'string',
                         'default' => ''
                     ),
-                    'union' => array(
-                        'type' => 'string',
-                        'default' => ''
-                    ),
                     'page' => array(
                         'type' => 'string',
                         'default' => ''
@@ -56,20 +52,15 @@ class SCUnion extends BaseController
         );
     }
     public function renderPostsBlock( $attributes ) {
+        $api = $attributes['api'];
+        $service_topic = $_GET['topic'];
+        $service_for = $_GET['for'];
+        $des_page_slug = $attributes['page'];
         ob_start();
-        
-        echo '<div class="container">';
-        echo ( $this->getDistantTerms( $attributes['api'] ));
-        echo '</div>';
+
+        echo ( $this->getDistantTerms( $api.'/topic='.$service_topic.'/for='.$service_for.'/base='.$this->baseUrlWithoutHttp().'/page='.$des_page_slug ));
 
         return ob_get_clean();
-    }
-    public function getDistantTerms( $api = '' ) {
-        $response = wp_remote_get( $api );
-        if(is_wp_error($response)) {
-            return array();
-        }
-        return json_decode(wp_remote_retrieve_body($response));
     }
 }
 
