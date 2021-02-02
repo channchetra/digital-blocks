@@ -23,17 +23,11 @@ registerBlockType( 'digital-blocks/sc-detail', {
 		toggle_panel: {
 			type: 'boolean',
 			default: false
-		},
-		api: {
-			type: 'string',
-			default: ''
 		}
 	},
 	edit: ( { attributes, setAttributes } ) => {
 		const {
-			mark_text, 
-			toggle_panel,
-			api
+			mark_text
 		} = attributes
 
 		return (
@@ -43,19 +37,6 @@ registerBlockType( 'digital-blocks/sc-detail', {
 						<MarkText
 							attributes={attributes}
 							setAttributes={setAttributes}
-						/>
-					</PanelBody>
-					<PanelBody 
-						title={ __( 'Block Options', 'CEGOV' ) }
-						initialOpen={ toggle_panel }
-						onToggle={ () => {
-							setAttributes( { toggle_panel: ! toggle_panel } ) 
-						} }
-					>
-						<InputControl
-							label={ __( 'Api URL', 'CEGOV' ) }
-							value={ api }
-							onChange={ ( value ) => setAttributes( { api: value } ) }
 						/>
 					</PanelBody>
 				</InspectorControls>

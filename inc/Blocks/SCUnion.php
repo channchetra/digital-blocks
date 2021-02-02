@@ -56,6 +56,9 @@ class SCUnion extends BaseController
         $service_topic = $_GET['topic'];
         $service_for = $_GET['for'];
         $des_page_slug = $attributes['page'];
+        if ( !$api || !$service_for || !$service_topic || !$des_page_slug ) {
+            return;
+        }
         ob_start();
 
         echo ( $this->getDistantTerms( $api.'/topic='.$service_topic.'/for='.$service_for.'/base='.$this->baseUrlWithoutHttp().'/page='.$des_page_slug ));
