@@ -13,4 +13,3 @@ import './services/block'
 import './sc-detail/block'
 import './sc-for/block'
 import './sc-union/block'
-// import './block-service-content/block.js';

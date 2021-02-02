@@ -55,7 +55,7 @@ class SCDetail extends BaseController
         $data = $this->getDistantTerms( 'https://demo.cambodia.gov.kh/wp-json/wp/v2/service/'.$id );
         ob_start();
         echo '
-        <section>
+        <section class="mb-2 mb-md-6">
             <header class="block-heading text-left">
                 <h4 class="text-danger font-weight-bold">
                     '.$data->title->rendered.'
