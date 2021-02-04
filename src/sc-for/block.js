@@ -29,7 +29,11 @@ registerBlockType( 'digital-blocks/sc-for', {
 			type: 'string',
 			default: ''
 		},
-		union: {
+		service_for: {
+			type: 'string',
+			default: ''
+		},
+		service_level: {
 			type: 'string',
 			default: ''
 		},
@@ -43,7 +47,8 @@ registerBlockType( 'digital-blocks/sc-for', {
 			mark_text, 
 			toggle_panel,
 			api,
-			union,
+			service_for,
+			service_level,
 			page
 		} = attributes
 
@@ -69,9 +74,14 @@ registerBlockType( 'digital-blocks/sc-for', {
 							onChange={ ( value ) => setAttributes( { api: value } ) }
 						/>
 						<InputControl
-							label={ __( 'Union Term (ID)', 'CEGOV' ) }
-							value={ union }
-							onChange={ ( value ) => setAttributes( { union: value } ) }
+							label={ __( 'Service For (ID)', 'CEGOV' ) }
+							value={ service_for }
+							onChange={ ( value ) => setAttributes( { service_for: value } ) }
+						/>
+						<InputControl
+							label={ __( 'Service Level (ID)', 'CEGOV' ) }
+							value={ service_level }
+							onChange={ ( value ) => setAttributes( { service_level: value } ) }
 						/>
 						<InputControl
 							label={ __( 'Destination Page (URL)', 'CEGOV' ) }

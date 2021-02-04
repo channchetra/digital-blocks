@@ -43,7 +43,11 @@ class SCFor extends BaseController
                         'type' => 'string',
                         'default' => ''
                     ),
-                    'union' => array(
+                    'service_for' => array(
+                        'type' => 'string',
+                        'default' => ''
+                    ),
+                    'service_level' => array(
                         'type' => 'string',
                         'default' => ''
                     ),
@@ -59,8 +63,10 @@ class SCFor extends BaseController
         ob_start();
         
         $column = 3;
-        $term_id = $attributes['union'];
+        $service_for = $attributes['service_for'];
+        $service_level = $attributes['service_level'];
         $api = $attributes['api'];
+        $get_fetch = $this->getDistantTerms( $api.'/for='.$service_for.'/level='.$service_level );
         echo (
             '
             <div class="">
@@ -71,7 +77,7 @@ class SCFor extends BaseController
             '
         );
 
-        foreach ( $this->getDistantTerms( $api.'/'.$term_id ) as $key => $term ) {
+        foreach ( $get_fetch as $key => $term ) {
             printf(
                 '
                 <td>
@@ -81,7 +87,7 @@ class SCFor extends BaseController
                                 <img width="34" src="%s" />
                             </div>
                             <figcaption>
-                                <a href="%s?topic=%s&for=%s">
+                                <a href="%s?topic=%s&for=%s&level=%s">
                                     <h5>%s</h5>
                                 </a>
                                 <p class="d-none d-lg-block">%s</p>
@@ -93,7 +99,8 @@ class SCFor extends BaseController
                 $term->icon,
                 $attributes['page'],
                 $term->id,
-                $term_id,
+                $service_for,
+                $service_level,
                 $term->name,
                 $term->description
             );
