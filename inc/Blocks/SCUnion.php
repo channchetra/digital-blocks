@@ -53,12 +53,12 @@ class SCUnion extends BaseController
     }
     public function renderPostsBlock( $attributes ) {
         $api = $attributes['api'];
-        $service_topic = $_GET['topic'];
-        $service_for = $_GET['for'];
-        $service_level = $_GET['level'];
+        $service_topic = isset( $_GET['topic'] ) ? $_GET['topic'] : '';
+        $service_for = isset( $_GET['for'] ) ? $_GET['for'] : '';
+        $service_level = isset( $_GET['level'] ) ? $_GET['level'] : '';
         $des_page_slug = $attributes['page'];
         if ( !$api || !$service_for || !$service_topic || !$des_page_slug ) {
-            return;
+            return ob_get_clean();
         }
         ob_start();
 
